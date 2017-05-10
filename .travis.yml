@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- 7
+cache:
+  yarn: true
+  directories:
+  - "~/.cache/yarn"
+services:
+- mongodb
+after_success:
+- npm run build
+- './bin/travis-deploy.sh'
+env:
+  global:
+  - GIT_USER: Travis CI
+  - GIT_EMAIL: kamataryo@users.noreply.github.com
+  - GH_REF: github.com/kamataryo/websocket-iot-server.git

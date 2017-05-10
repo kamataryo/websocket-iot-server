@@ -1,0 +1,13 @@
+# build files
+/node_modules
+/dist
+
+# logs
+*.log
+
+# key pairs
+id_ecdsa
+id_ecdsa.pub
+
+# developmental mongoDB dbpath
+/db
