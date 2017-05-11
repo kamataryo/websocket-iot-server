@@ -3,11 +3,14 @@
 LOCAL_BIN="./node_modules/.bin"
 
 # build server
-NODE_ENV=production $LOCAL_BIN/webpack -p
+$LOCAL_BIN/webpack -p
 cp ./package.json ./dist/
 
-pushd
-./dist && npm install --production
+# install dependencies
+pushd ./dist
+npm install --production
 popd
 
 rm ./dist/package.json
+
+./bin/keygen.sh -y

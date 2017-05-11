@@ -1,11 +1,14 @@
-import express  from 'express'
+import fs       from 'fs'
 import http     from 'http'
+import express  from 'express'
 import mongoose from 'mongoose'
 import socketIO from 'socket.io'
 import { yellow, red, blue, green } from 'chalk'
 import authenticate from './authenticate'
 import config from './config'
 import hooks from './hooks/index'
+
+const PRIVATE_KEY = fs.readFileSync(__dirname + '/id_ecdsa')
 
 /**
  * log headers
@@ -70,7 +73,7 @@ socketIO
 
       process.stdout.write(`[${CONNECTION}][${Date()}] ${username} is connected.\n`)
 
-      authenticate(data)
+      authenticate(data, PRIVATE_KEY)
         .then(({ token, authuser }) => {
 
           // overwrite

@@ -1,6 +1,6 @@
-import path               from 'path'
-import webpack            from 'webpack'
-import nodeExternals      from 'webpack-node-externals'
+import path          from 'path'
+import webpack       from 'webpack'
+import nodeExternals from 'webpack-node-externals'
 
 export default {
   entry: path.join(__dirname, '/src/index.js'),

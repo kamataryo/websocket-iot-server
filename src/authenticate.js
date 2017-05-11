@@ -1,16 +1,14 @@
 import jwt    from 'jsonwebtoken'
-import fs     from 'fs'
 import config from './config'
 import User   from './models/User'
-
-const privateKey = fs.readFileSync(__dirname + '/../id_ecdsa')
 
 /**
  * Promise user authentication
  * @param  {{username:string,password:string,token:string}} data data for authentication
+ * @param  {string} privateKey private key
  * @return {Promise} do authentication
  */
-export default data => new Promise((resolve, reject) => {
+export default (data, privateKey) => new Promise((resolve, reject) => {
 
   /**
    * parse the argument
@@ -48,6 +46,6 @@ export default data => new Promise((resolve, reject) => {
           reject()
         }
       })
-      .catch(e => console.log(e))
+      .catch(e => process.stderr.write(e))
   }
 })

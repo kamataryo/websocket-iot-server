@@ -8,3 +8,6 @@
 # key pairs
 id_ecdsa
 id_ecdsa.pub
+
+# developmental mongoDB dbpath
+/db
