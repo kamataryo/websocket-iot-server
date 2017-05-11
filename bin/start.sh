@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 DB_PATH=./db
-DB_PORT=27017
 LOCAL_BIN=./node_modules/.bin
+
+
+if [[ $DB_PORT == '' ]]; then
+  DB_PORT=27017
+fi
 
 # generate keys
 ./bin/keygen.sh -y

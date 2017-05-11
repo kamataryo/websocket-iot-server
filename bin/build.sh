@@ -8,7 +8,8 @@ cp ./package.json ./dist/
 
 # install dependencies
 pushd ./dist
-npm install --production
+type yarn >/dev/null 2>&1 && yarn install --prods
+type yarn >/dev/null 2>&1 || npm install --production
 popd
 
 rm ./dist/package.json

@@ -19,7 +19,9 @@ const DOWNSTREAM    = green('DOWNSTREAM')
 const CONNECTION    = yellow('CONNECTION')
 const AUTHORIZATION = red('AUTHORIZATION')
 const PORT = process.env.PORT || config.server.port
-
+const DB_HOST = process.env.DB_HOST || config.mongo.default.dbhost
+const DB_PORT = process.env.DB_PORT || config.mongo.default.dbport
+const DB_NAME = process.env.DB_NAME || config.mongo.default.dbname
 
 /**
  * data store
@@ -48,7 +50,7 @@ app
 
 // connect db
 try {
-  mongoose.connect(`mongodb://${config.mongo.dbhost}:${config.mongo.dbport}/${config.mongo.dbname}`)
+  mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`)
 } catch (e) {
   process.stderr.write('Error in DB connection.')
   process.stderr.write(e)
