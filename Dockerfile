@@ -1,16 +1,14 @@
 FROM node:latest
 MAINTAINER kamataryo <mugil.cephalus@gmail.com>
 
-ENV DB_HOST localhost
+ENV DB_HOST 172.17.0.1
 ENV DB_PORT 27017
 ENV DB_NAME websocket_iot_server
 
 ADD . /src
 WORKDIR /src
 
-RUN npm install
-RUN npm run build
-RUN npm run migrate
+RUN npm install && npm run build
 
 EXPOSE 3001
-ENTRYPOINT ["node", "/src/dist/bundle.js"]
+ENTRYPOINT ["/src/bin/docker-entrypoint.sh"]

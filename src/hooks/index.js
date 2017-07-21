@@ -19,12 +19,11 @@ export default {
     exec(gpio.direction('out', 18))
   },
   changeOn : (key, val) => () => {
-    switz(key, s => {
-      s.case('toggle0', () => exec(gpio.toggle(val, 14)))
-      s.case('toggle1', () => exec(gpio.toggle(val, 15)))
-      s.case('toggle2', () => exec(gpio.toggle(val, 18)))
-    })
-  },
+    switz(key, s => s
+      .case('toggle0', () => exec(gpio.toggle(val, 14)))
+      .case('toggle1', () => exec(gpio.toggle(val, 15)))
+      .case('toggle2', () => exec(gpio.toggle(val, 18)))
+  )},
   terminate: () => {
     exec(gpio.unexport(14))
     exec(gpio.unexport(15))
